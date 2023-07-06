@@ -1,0 +1,32 @@
+{{>partials/header}}
+<section class="upload-container flex">
+         <form action="" class="flex-col upload-form">
+            <label for="" class="label-upload sty-label">Nome do item:</label>
+            <input 
+                type="text" 
+                name="name-item"  
+                class="si-tu styles-input size-input-name-item" 
+                placeholder="Ex:Copo Stanley">
+            <label for="" class="label-upload sty-label">Pequena descrição item:</label>
+            <textarea 
+                class="textArea styles-input" 
+                name="description-item"  
+                maxlength="90" 
+                placeholder="Ex:Copo Stanley encontrado no laboratorio de informatica"></textarea>
+            <label for="" class="label-upload sty-label">Perguntas para validação:</label>
+            <textarea 
+                class="textArea styles-input" 
+                name="questions-item" 
+                placeholder="Ex:Qual o nome atras abaixo do item ?&#10Qual o nome atras abaixo do item ?"></textarea>
+            <label for="" class="label-upload sty-label">Localização de encontro:</label>
+            <textarea 
+                class=" dif-heigh-text textArea  styles-input" 
+                name="location-item" 
+                placeholder="Ex:Unifesspa campus 2 &#10 Bloco 5 &#10 Sala 24 &#10 Horario : 17:30"></textarea>
+            <label for="" class=" label-upload sty-label">Escolha imagem:</label>
+            <input type="file" name="upload-img">
+            <input class="bt-upload sb-style-upload" type="submit" value="Enviar">
+         </form>
+    </section> 
+</main>
+{{>partials/footer}}

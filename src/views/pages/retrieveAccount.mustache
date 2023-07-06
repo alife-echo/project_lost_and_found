@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="./images/search.png" sizes="57x57">
+    <link rel="stylesheet" href="./styles/style.css">
+    <title>SAP-RECUPERAR</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@700&family=Inter:wght@500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="flex full-size">
+ <main class="flex full-size">
+    <section class="form-container flex">
+    <form action="retrieve-post" class="register-retrieve" method="post">
+        <h1 class="dra center-text title-form ">RECUPERAR SENHA</h1>
+        <label for="name" class="sty-label">Email Institucional *</label>
+         <input type="email" class="styles-input size-inputs" name="email-retrieve" placeholder="Ex:alife.silva@unifesspa.edu.br">
+         <input type="submit" class="sb-style" value="Enviar">
+      </form>
+    </section>
+ </main>
+
+ {{>partials/footer}}

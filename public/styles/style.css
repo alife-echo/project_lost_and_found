@@ -1,0 +1,661 @@
+*{
+    box-sizing: border-box;
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+}
+html{
+    font-size: 65.2%;
+    scroll-behavior: smooth;
+    --backgroundFooter:#111111;
+    --backgroundDefaultElements:#000000;
+    --backgroundInputs: #ECECEC;
+    --white:#FFFFFF;
+    --colorTextCard:#666666;
+    --errorMessage:#ff0000;
+}
+
+/*LOGIN,REGISTER,RETRIEVE  AND PAGE*/
+body{
+    flex-direction: column;
+}
+.flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.full-size{
+    height: 100vh;
+    width: 100%;
+}
+.form-container{
+    flex: 1.1;
+}
+
+.form-container form{
+    display: flex;
+    flex-direction: column;
+}
+.sty-label{
+    margin-bottom: 0.8rem;
+    margin-top: 0.8rem;
+    font-family: 'Inter';
+    font-weight: 500;
+    font-size: 1.5rem;
+}
+
+.center-text{
+    text-align: center;
+}
+.title-form{
+    font-family: 'Barlow';
+    font-weight: bold;
+    color: var(--backgroundDefaultElements);
+    font-size: 4.8rem;
+    margin-bottom: 1.5rem;
+}
+.dra{
+    font-size: 3.5rem;
+}
+.size-inputs{
+    width: 30.9rem;
+    height: 3.5rem;
+}
+.styles-input{
+    background-color: var(--backgroundInputs);
+    outline: none;
+    border: transparent;
+    border-radius: 0.8rem;
+    font-family: 'Inter';
+    padding: 2rem;
+    font-size: 1.5rem;
+    color: var(--backgroundDefaultElements);
+}
+.link{
+    font-family: 'Inter';
+    font-weight: 500;
+    font-size: 1.4rem;
+    color: var(--backgroundDefaultElements);
+    opacity: 0.5;
+    margin-top: 1rem;
+}
+.sb-style{
+    font-family: 'Inter';
+    font-weight: 500;
+    outline: none;
+    border: transparent;
+    width: 30.9rem;
+    height: 3.5rem;
+    border-radius: 0.8rem;
+    font-size: 1.7rem;
+    color: var(--white);
+    cursor: pointer;
+    margin-top: 1rem;
+    background-color: var(--backgroundFooter);
+}
+.sb-style-upload{
+    font-family: 'Inter';
+    font-weight: 500;
+    outline: none;
+    border: transparent;
+    width: 30.9rem;
+    height: 3.5rem;
+    border-radius: 0.8rem;
+    font-size: 1.7rem;
+    color: var(--white);
+    cursor: pointer;
+    margin-top: 1rem;
+    background-color: var(--backgroundFooter);
+}
+.size-input-name-item{
+    width: 30.9rem;
+    height: 3.5rem;
+}
+footer{
+    min-height: 7.5rem;
+    max-height: 100%;
+    width: 100%;
+    background-color: var(--backgroundFooter);
+    
+}
+footer p{
+    color: var(--white);    
+    font-family: 'Inter';
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+footer p span{
+    padding: 0.2rem;
+    background-color: var(--white);
+    border-radius: 100%;
+}
+footer p span img{
+    width: 1rem;
+    height: 1rem;
+}
+.spinner{
+    height: 6rem;
+    width: 6rem;
+    border: 6px solid black;
+    border-color: black transparent black transparent;
+    border-radius: 50%;
+    animation:  spin 1s linear infinite;
+    display: block;
+}
+@keyframes spin{
+    to{
+        transform: rotate(360deg);
+    }
+}
+
+/* INPUTS AND TITLE PAGE HOME*/
+header{
+    width: 100%;
+    padding: 1rem 0rem 1rem 0rem;
+    background-color: var(--backgroundFooter);
+}
+.flex-col{
+    display: flex;
+    flex-direction: column;
+}
+.title-home  {
+    font-size: 3.2rem;
+    color: var(--white);
+    display: inline-block;
+    font-family: 'Barlow';
+    font-weight: bold;
+    margin-left: 5rem;
+    
+}
+.title-home a{
+    color: inherit;
+}
+.full-size-grow{
+    width: 100%;
+    flex-grow: 1;
+}
+/*MAGNIFIC GLASS AND INPUT*/
+.fg--search {
+    background: white;
+    position: relative;
+    width: 50rem;
+    border-radius: 1rem;
+  }
+.input-filter {
+    width: 100%;
+    padding: 1.5rem;
+    display: inline-block;
+    outline: none;
+    border: transparent;
+    border-radius: 1rem;
+    font-size: 1.6rem;
+  }
+.fg--search button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 20px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 1.1rem;
+    z-index: 2;
+  }
+  .fg--search button img {
+     width: 2.5rem;
+  }
+  /*IMGS UPLOAD MESSAGE,LOG OUT*/
+  .imgs-link figure img{
+     width: 3rem;
+  }
+  .imgs-link figure{
+     background-color: var(--white);
+     display: inline-block;
+     border-radius: 50%;
+     padding: 0.7rem;
+     cursor: pointer;
+  }
+  header nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .imgs-link{
+    margin-right: 5rem;
+  }
+  .imgs-link  figure:nth-child(1),.imgs-link  figure:nth-child(2){
+        margin-right: 2rem;
+  }
+  /*CARDS PAGE HOME*/
+  .cards{
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: flex-start;
+    margin-top: 2rem;
+  }
+  .card{
+     margin: 1rem;
+     width: 28rem;
+     border-radius: 1rem;
+     box-shadow: 0px 0px 17px -3px rgba(0,0,0,0.1);
+     transition: ease 300ms;
+     cursor: pointer;
+     overflow: hidden;
+     word-wrap: break-word;
+  }
+  .card:hover{
+    transition: ease 300ms;
+    box-shadow: 0px 0px 7px 9px rgba(0,0,0,0.1);
+  }
+  .card figure img{
+     width: 100%;
+     height: 19rem;
+     border-radius: 1rem;
+  }
+  .title-card{
+    color: var(--backgroundDefaultElements);
+    font-family: 'Inter';
+    font-weight: 600;
+    margin: 1rem;
+  }
+  .p-card{
+    color: var(--colorTextCard);
+    font-family: 'Inter';
+    font-weight: 500;
+    margin: 1rem;
+  }
+  .text-xl{
+    font-size: 2rem;
+  }
+  .text-xs{
+    font-size: 1.6rem;
+  }
+
+  .bt-card{
+    background-color: var(--backgroundFooter);
+    outline: none;
+    color: var(--white);
+    padding: 1.5rem 2.8rem 1.5rem 2.8rem;
+    font-family: 'Inter';
+    font-weight: bold;
+    font-size: 1.4rem;
+    border-radius: 0.8rem;
+    margin: 1rem;
+    border: transparent;
+    cursor: pointer;
+  }
+
+  /*UPLOAD PAGE*/
+.upload-container{
+    margin: 1rem 0rem 0.5rem 0rem;
+}
+.upload-form{
+    padding: 2rem;
+    justify-content: center;
+    box-shadow: 0px 0px 17px -3px rgba(0,0,0,0.1);
+    border-radius: 1.5rem;
+}
+.si-tu{
+    width: 35rem;
+}
+.bt-upload{
+    width: 100%;
+    padding: 1rem;
+    height: 4rem;
+}
+.textArea{
+     width: 35rem;
+     height: 8rem;
+     padding: 1rem;
+}
+.dif-heigh-text{
+    padding: 1rem;
+    height: 10rem;
+}
+.label-upload{
+    margin-top: 0.1rem;
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+.m-1{
+    margin: 1rem;
+}
+.mt-1{
+    margin-top: 1rem;
+}
+.mt-1_5{
+    margin-top: 1.5rem;
+}
+.input-textArea{
+    width: 96%;
+    height: 13rem;
+}
+.img-forum{
+    width: 50rem;
+    height: 30rem;
+    border-radius: 0.8rem;
+}
+.messages-container{
+    margin-bottom: 2rem;
+}
+.info-item{
+    box-shadow: 0px 0px 17px -3px rgba(0,0,0,0.1);
+    padding: 0rem 0rem 1rem 0rem;
+    border-radius: 0.8rem;
+}
+.message{
+    box-shadow: 0px 0px 17px -3px rgba(0,0,0,0.1);
+    border-radius: 0.8rem;
+    width: 50rem;
+    padding: 1rem;
+    transition: 300ms ease;
+    cursor: pointer;
+}
+.message:hover{
+    transition: ease 300ms;
+    box-shadow: 0px 0px 7px 9px rgba(0,0,0,0.1);
+    
+}
+.menu-toggle div {
+    transition: transform 0.3s, opacity 0.3s;
+}
+
+.links-hidden {
+    transition: display 0.3s;
+}
+/* MEDIA QUERIES */
+@media screen and (min-width:891px){
+    .links-hidden a{
+        display: none;
+    }
+    
+}
+@media  screen and (max-width:890px) {
+    .links-hidden{
+        width: 100%;
+        background-color: var(--backgroundFooter);
+        text-align: center;
+        display: none;
+    }
+    .links-hidden  a {
+        color: var(--white);
+        padding: 1rem;
+        display: block;
+        font-size: 2rem;
+        font-family: 'Inter';
+        font-weight: 400;
+        transition: 300ms ease; 
+    }
+    .links-hidden a:hover{
+        transition: 300ms ease;
+        background-color: var(--white);
+        color: var(--backgroundFooter);
+    }
+    .imgs-link{
+        display: none;
+    }
+    .one,.two,.three{
+        background-color: var(--white);
+        width: 100%;
+        height: 0.5rem;
+        margin: 0.6rem auto;
+    }
+    .menu-toggle{
+        width: 4rem;
+        height: 3rem;
+        margin-right: 2rem;
+    }
+    .fg--search{
+        width: 40rem;
+    }
+}
+.menu-toggle{
+    cursor: pointer;
+}
+@media screen and (max-width:641px) {
+    .card{
+        width: 35rem;
+    }
+     .card figure img{
+        height: 25rem;
+    }
+    .bt-card{
+        width: 94%;
+        font-size: 1.8rem;
+        padding: 1rem 2.8rem 1rem 2.8rem;
+    }
+}
+@media screen and (max-width:615px){
+    .fg--search{
+        width: 30rem;
+    }
+    .title-home{
+        margin-left: 3rem;
+    }
+}
+@media screen and (max-width:533px) {
+    .img-forum{
+        width: 30rem;
+        height: 20rem;
+    }
+    .text-rs{
+        font-size: 1.3rem;
+    }
+    .message{
+        width: 30rem;
+    }
+    .text-rs-message{
+        font-size: 1.5rem;
+    }
+}
+
+@media screen and (max-width:488px){
+    .fg--search{
+        width: 25rem;
+    }
+    .input-filter::placeholder{
+        font-size: 1.3rem;
+    }
+    .title-home{
+        margin-left: 2rem;
+    }
+}
+@media screen and (max-width:450px) {
+    footer p{
+        font-size: 1rem;
+    }
+    footer p span{
+        padding: 0.3rem;
+    }
+}
+@media screen and (min-width:441px){
+    .input-search-hidden,.submit-search-hidden,.form-input-search-hidden{
+        display: none;
+    }
+    .submit-search-hidden{
+        margin-top: 1rem;
+    }
+}
+@media screen and (max-width:440px){
+.form-group{
+    display: none;
+}
+.input-search-hidden{
+    outline: none;
+    border: transparent;
+    padding: 1rem;
+    border-radius: 0.8rem;
+}
+.submit-search-hidden{
+   padding: 1rem; 
+   outline: none;
+   border: transparent;
+   border-radius: 0.8rem;
+}
+   
+}
+@media screen  and (max-width:400px){
+    .card{
+        width: 30rem;
+    }
+     .card figure img{
+        height: 25rem;
+    }
+}
+@media screen and (max-width:360px) {
+    footer p{
+        font-size: 0.8rem;
+    }
+    footer p span{
+     padding-bottom: 0rem;
+    }
+    .sb-style-upload{
+        width:25rem;
+      
+    }
+    .textArea{
+        width: 25rem;
+    }
+    .textArea::placeholder{
+        font-size: 1.2rem;
+    }
+    .upload-form{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+    }
+    .size-input-name-item{
+        width: 20rem;
+    }
+}
+@media screen and (max-width:345px) {
+    .card{
+        width: 25rem;
+    }
+     .card figure img{
+        height: 20rem;
+    }
+}
+
+@media screen and (max-width:327px) {
+    .size-inputs{
+        width: 23rem;
+        height: 3rem;
+    }
+    .sb-style{
+        width: 23rem;
+        height: 3rem;
+    }
+    
+}
+@media screen and (max-width:324px){
+    .bt-upload{
+        width: 100%;
+    }
+    .img-forum{
+        width: 27rem;
+        height: 17rem;
+    }
+    .input-textArea{
+        width: 90%;
+    }
+    .info-item{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+    }
+    .message{
+        width: 25rem;
+    }
+}
+@media screen and (max-width:295px) {
+    .img-forum{
+        width: 25rem;
+    }  
+    .input-textArea{
+        width: 88%;
+    }  
+}
+@media screen and (max-width:282px){
+    .submit-search-hidden{
+        margin-top: 1rem;
+    }
+}
+@media screen and (max-width:280px) {
+    .card{
+        width: 25rem;
+    }
+    .bt-card{
+        width: 90%;
+    }
+     .card figure img{
+        height: 20rem;
+    }
+    .bt-card{
+        font-size: 1.3rem;
+    }
+    footer p{
+        font-size: 0.6rem;
+    }
+    footer p span{
+     padding: 0.2rem 0.2rem 0.01rem 0.1rem;
+    }
+    footer p span img{
+        width: 0.7rem;
+        height: 0.7rem;
+    }
+    footer{
+        width: 100%;
+    }
+    .size-inputs{
+        width: 20rem;
+        height: 3rem;
+    }
+    .sb-style{
+        width: 20rem;
+        height: 3rem;
+    }
+    .title-form{
+        font-size: 3.8rem;
+    }
+    .register-retrieve{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .text-xl{
+        font-size: 1.5rem;
+    }
+    .title-rs{
+        font-size: 2rem;
+    }
+    .text-xs{
+        font-size: 1.4rem;
+    }
+    .textArea{
+        width: 20rem;
+    }
+    .upload-form{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+    }
+    .sb-style-upload{
+        width: 20rem;
+    }
+   input[type='file']{
+        width: 20rem;
+   }
+}
+
+
+/*STYLES MESSAGES LOGIC BACK-END*/
+.color-red{
+    color:var(--errorMessage);
+}

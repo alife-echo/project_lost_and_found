@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="./images/search.png" sizes="57x57">
+    <link rel="stylesheet" href="./styles/style.css">
+    <title>SAP-REGISTRAR</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@700&family=Inter:wght@500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="flex full-size">
+ <main class="flex full-size">
+    <section class="form-container flex">
+    <form action="register-post" class="register-retrieve" method="post">
+        <h1 class="center-text title-form">REGISTRAR</h1>
+        <p class='p-card color-red center-text text-xl'>{{message}}</p>
+        <label for="name" class="sty-label">Nome completo *</label>
+         <input type="text" class="styles-input size-inputs" name="name" placeholder="Ex:Álife Silva De Moraes">
+         <label for="email" class="sty-label">Email Institucional *</label> 
+         <input type="email" class="styles-input size-inputs" name="email" placeholder="Ex:alife.silva@unifesspa.edu.br">
+         <label for="password" class="sty-label">Senha *</label> 
+         <input type="password" class="styles-input size-inputs" name="password" placeholder="Ex:#@d291312">
+         <input type="submit" class="sb-style" value="Enviar">
+      </form>
+    </section>
+ </main>
+
+ {{>partials/footer}}
