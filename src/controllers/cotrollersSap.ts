@@ -41,7 +41,7 @@ export const register_post = async(req:Request,res:Response) => {
         return
      }
      res.render('pages/register',{
-        message:'E-mail e/ou senha não enviados'
+        message:'E-mail e/ou senha não enviados*'
    })
 }
 
@@ -71,6 +71,32 @@ export const email_confirm = async(req:Request,res:Response) => {
      res.render('pages/confirmAccount')
 }
 export const email_confirm_post = async(req:Request,res:Response) => {
-    res.render('pages/confirmAccount')
+    if(req.body.email_confirm){
+        let {email_confirm} = req.body
+        let hasCode = await User.findOne({where:{code:email_confirm} })
+        if(hasCode) {
+            if(hasCode.code.toString() === req.body.email_confirm){
+                await User.update({ validated:1},{
+                     where:{
+                         code:hasCode.code
+                     }
+                })
+                res.redirect('/message_create_email')
+            }
+            else{
+                res.render('pages/confirmAccount',{
+                    message:'Codigo Incorreto*'
+               })
+            }
+        }
+        
+        return
+    }
+    res.render('pages/confirmAccount',{
+         message:'Codigo não enviado*'
+    })
 }
 
+export const message_email_confirm = async(req:Request,res:Response) => {
+       res.render('pages/messageConfirmAccount')
+}

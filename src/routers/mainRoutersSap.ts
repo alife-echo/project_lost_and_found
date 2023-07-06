@@ -18,4 +18,7 @@ routers.post('/home-post',controllersSap.home_post)
 routers.get('/confirm-email',controllersSap.email_confirm)
 routers.post('/confirm-email-post',controllersSap.email_confirm_post)
 
+routers.get('/message_create_email',controllersSap.message_email_confirm)
+
+
 export default routers
