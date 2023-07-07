@@ -74,11 +74,10 @@ export const email_confirm_post = async(req:Request,res:Response) => {
     if(req.body.email_confirm){
         let {email_confirm} = req.body
         let hasCode = await User.findOne({where:{code:email_confirm} })
-        if(hasCode) {
-            if(hasCode.code.toString() === req.body.email_confirm){
+            if(hasCode?.code.toString() === req.body.email_confirm){
                 await User.update({ validated:1},{
                      where:{
-                         code:hasCode.code
+                         code:hasCode?.code
                      }
                 })
                 res.redirect('/message_create_email')
@@ -87,9 +86,7 @@ export const email_confirm_post = async(req:Request,res:Response) => {
                 res.render('pages/confirmAccount',{
                     message:'Codigo Incorreto*'
                })
-            }
-        }
-        
+            }        
         return
     }
     res.render('pages/confirmAccount',{
