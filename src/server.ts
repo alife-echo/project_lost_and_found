@@ -1,6 +1,6 @@
 import path from "path";
 import express,{Request,Response} from 'express'
-import routersSap from './routers/mainRoutersSap'
+import AuthRouters from './routers/AuthRouters'
 import dotenv from 'dotenv'
 import mustacheExpress from "mustache-express";
 dotenv.config()
@@ -11,7 +11,7 @@ server.set('view engine','mustache')
 server.use(express.urlencoded({extended:true}))
 server.engine('mustache',mustacheExpress())
 server.use(express.static(path.join(__dirname,'../public')))
-server.use(routersSap)
+server.use(AuthRouters)
 
 server.use((req:Request,res:Response)=>{
      res.json({error:'pagina não encontrada'}).status(404)

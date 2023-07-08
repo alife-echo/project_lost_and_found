@@ -9,9 +9,6 @@ export const login_post = async(req:Request,res:Response) => {
      res.render('pages/index')
 }
 
-
-
-
 export const register = async(req:Request,res:Response) => {
     res.render('pages/register')
 }
@@ -45,27 +42,12 @@ export const register_post = async(req:Request,res:Response) => {
    })
 }
 
-
-
 export const retrieveAccount = async(req:Request,res:Response) => {
     res.render('pages/retrieveAccount')
 }
 export const retrieveAccount_post = async(req:Request,res:Response) => {
     res.render('pages/retrieveAccount')
 }
-
-
-
-
-
-export const home = async(req:Request,res:Response) => {
-     res.render('pages/home')
-}
-
-export const home_post = async(req:Request,res:Response) => {
-    res.render('pages/home')
-}
-
 
 export const email_confirm = async(req:Request,res:Response) => {
      res.render('pages/confirmAccount')

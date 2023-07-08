@@ -1,0 +1,54 @@
+import nodemailer from 'nodemailer';
+import { Request, Response } from 'express';
+
+export const email_confirm_post = async (req: Request, res: Response) => {
+  if (req.body.email_confirm) {
+    let { email_confirm } = req.body;
+    let hasCode = await User.findOne({ where: { code: email_confirm } });
+
+    if (hasCode?.code.toString() === req.body.email_confirm) {
+      // Código correto, enviar e-mail para a pessoa
+      const transporter = nodemailer.createTransport({
+        host: 'smtp.gmail.com',
+        port: 465,
+        secure: true,
+        auth: {
+          user: 'seu-email@gmail.com', // Seu endereço de e-mail do Gmail
+          pass: 'sua-senha', // Sua senha do Gmail
+        },
+      });
+
+      const mailOptions = {
+        from: 'seu-email@gmail.com', // Seu endereço de e-mail do Gmail
+        to: 'email-da-pessoa@exemplo.com', // E-mail da pessoa para quem você deseja enviar
+        subject: 'Confirmação de E-mail',
+        text: `Seu código de confirmação é: ${hasCode?.code}`,
+      };
+
+      transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+          console.error(error);
+          res.render('pages/confirmAccount', {
+            message: 'Erro ao enviar e-mail',
+          });
+        } else {
+          // Atualizar o status da validação e redirecionar para uma página de sucesso
+          await User.update({ validated: 1 }, {
+            where: {
+              code: hasCode?.code,
+            },
+          });
+          res.redirect('/message_create_email');
+        }
+      });
+    } else {
+      res.render('pages/confirmAccount', {
+        message: 'Código Incorreto*',
+      });
+    }
+    return;
+  }
+  res.render('pages/confirmAccount', {
+    message: 'Código não enviado*',
+  });
+};
