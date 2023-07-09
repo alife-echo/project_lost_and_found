@@ -30,14 +30,13 @@ export const register_post = async (req: Request, res: Response) => {
             port: 465,
             secure: true,
             auth: {
-              user: 'alife.silva@unifesspa.edu.br', // Seu endereço de e-mail do Gmail
-              pass: `${process.env.MYSQL_PASSWORD}`, // Sua senha do Gmail
+              user: 'alife.silva@unifesspa.edu.br', 
+              pass: `${process.env.MYSQL_PASSWORD}`,
             },
           });
   
           const mailOptions = {
-            from: 'alife.silva@unifesspa.edu.br', // Seu endereço de e-mail do Gmail
-            to: email, // E-mail da pessoa para quem você deseja enviar
+            from: 'alife.silva@unifesspa.edu.br', 
             subject: 'Confirmação de E-mail',
             html: `
               <html>
