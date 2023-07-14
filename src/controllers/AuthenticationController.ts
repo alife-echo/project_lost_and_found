@@ -23,6 +23,9 @@ export const retrieveAccount = async(req:Request,res:Response) => {
 export const message_email_confirm = async(req:Request,res:Response) => {
   res.render('pages/messageConfirmAccount')
 }
+export const message_password_email = (req:Request,res:Response) =>{ 
+  res.render('pages/messageConfirmSendEmail')
+}
 
 //--------- CONTROLLERS ROUTERS POST --------------------- 
 export const login_post = async (req:Request,res:Response) => {
@@ -139,6 +142,8 @@ export const register_post = async (req: Request, res: Response) => {
             res.redirect('/confirm-email');
           }
         });
+
+
       } else {
         res.render('pages/register', {
           message: 'Apenas email institucional*'
@@ -157,12 +162,95 @@ export const register_post = async (req: Request, res: Response) => {
 };
 
 export const retrieveAccount_post = async(req:Request,res:Response) => {
-    res.render('pages/retrieveAccount')
+    if(req.body.email_retrieve){
+      let {email_retrieve} = req.body
+      let hasUser = await User.findOne({where:{email:email_retrieve}})
+      if(hasUser){
+        const token = JWT.sign(
+          { id: hasUser.id, email: hasUser.email },
+          process.env.JWT_SECRET_KEY as string,
+          { expiresIn: '1h' }
+        );
+        
+        res.cookie('token', token, { httpOnly: true });
+        const transporter = nodemailer.createTransport({
+          host: 'smtp.gmail.com',
+          port: 465,
+          secure: true,
+          auth: {
+            user: 'alife.silva@unifesspa.edu.br',
+            pass: `${process.env.MYSQL_PASSWORD}`,
+          },
+        });
+
+        const mailOptions = {
+          from: 'alife.silva@unifesspa.edu.br',
+          to: `${hasUser.email}`,
+          subject: 'Confirmação de E-mail',
+          html: `
+            <html>
+              <head>
+                <link rel="preconnect" href="https://fonts.googleapis.com">
+                <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+                <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@700&family=Inter:wght@500;600;700&display=swap" rel="stylesheet">
+                <style>
+                  body {
+                    width: 100%;
+                  }
+                  h1 {
+                    font-family: 'Barlow', sans-serif;
+                    font-size: 27px;
+                    font-weight: bold;
+                    margin-top: 5rem;
+                    text-align: center;
+                  }
+                  p {
+                    font-size: 22px;
+                    font-family: 'Inter', sans-serif;
+                    font-weight: 500;
+                    color: #666666;
+                    text-align: center;
+                  }
+                </style>
+              </head>
+              <body>
+                <h1>SUA SENHA</h1>
+                <p>${hasUser.password}</p>
+              </body>
+            </html>
+          `
+        };
+
+        transporter.sendMail(mailOptions, async (error, info) => {
+          if (error) {
+            console.error(error);
+            res.render('pages/retrieveAccount', {
+              message: 'Erro ao enviar e-mail',
+            });
+          } else {
+            // Redirecione para a página de confirmação de e-mail
+            res.redirect('/message_send_password_email');
+          }
+        });
+
+      }
+      else{
+        res.render('pages/retrieveAccount',{
+          message:'Email Invalido'
+       })
+      }
+    }
+    else{
+      res.render('pages/retrieveAccount',{
+         message:'Informe um email institucional'
+      })
+    }
+   
 }
 
 export const email_confirm_post = async (req: Request, res: Response) => {
   if (req.body.email_confirm) {
-    let { email_confirm } = req.body;
+    let { email_confirm} = req.body
     let hasCode = await User.findOne({ where: { code: email_confirm } });
     if (hasCode?.code.toString() === req.body.email_confirm) {
       await User.update({ validated: 1 }, {

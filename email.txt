@@ -52,3 +52,73 @@ export const email_confirm_post = async (req: Request, res: Response) => {
     message: 'Código não enviado*',
   });
 };
+
+
+
+
+import express from 'express';
+import jwt from 'jsonwebtoken';
+
+const router = express.Router();
+
+router.post('/logout', (req, res) => {
+  // Verifique se o token JWT está presente no cabeçalho da solicitação
+  const token = req.headers.authorization?.split(' ')[1];
+  
+  if (token) {
+    // Verifique se o token é válido
+    jwt.verify(token, 'chave-secreta-do-jwt', (err) => {
+      if (err) {
+        // Se houver erro na verificação, envie uma resposta de erro
+        return res.status(401).json({ message: 'Token inválido' });
+      } else {
+        // Se o token for válido, faça o logout do usuário
+        // ... lógica de logout ...
+        return res.status(200).json({ message: 'Logout realizado com sucesso' });
+      }
+    });
+  } else {
+    // Se o token não estiver presente, envie uma resposta de erro
+    return res.status(401).json({ message: 'Token não fornecido' });
+  }
+});
+
+export default router;
+
+
+
+
+
+<!-- Exemplo de um formulário Mustache -->
+<form method="POST" action="/logout">
+  <button type="submit">Logout</button>
+</form>
+
+
+import express from 'express';
+import jwt from 'jsonwebtoken';
+
+const router = express.Router();
+
+router.post('/logout', (req, res) => {
+  // Verifique se o token JWT está presente na query da solicitação
+  const token = req.query.token as string;
+  
+  if (token) {
+    // Remova o token da forma adequada de acordo com a sua implementação
+    // Exemplo de remoção do token em um cookie:
+    res.clearCookie('token');
+    
+    // Envie uma resposta de sucesso
+    return res.status(200).json({ message: 'Logout realizado com sucesso' });
+  } else {
+    // Se o token não estiver presente, envie uma resposta de erro
+    return res.status(401).json({ message: 'Token não fornecido' });
+  }
+});
+
+export default router;
+
+
+
+
