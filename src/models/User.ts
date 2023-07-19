@@ -1,6 +1,6 @@
 import {sequelize} from '../database/mysql';
 import {Model,DataTypes} from 'sequelize'
-
+import { Item } from './Item';
 export interface UserInstance extends Model{
   id:number,
   email:string,
@@ -33,7 +33,8 @@ export const User = sequelize.define<UserInstance>('User',{
      }
      
 },{tableName:'user',timestamps:false})
-
+User.hasMany(Item,{foreignKey:'userItemID'})
+Item.belongsTo(User,{foreignKey:'userItemID'})
 User.sync().then(()=>{
      console.log('Tabela usuario criada com sucesso')
 }).catch((error)=>{

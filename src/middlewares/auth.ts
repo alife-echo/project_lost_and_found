@@ -12,7 +12,6 @@ const authenticate = (req: Request): boolean => {
       console.log('Decoded:', decoded);
       return true;
     } catch (err) {
-      // Trate o erro aqui, se necessário
     }
   }
   return false;

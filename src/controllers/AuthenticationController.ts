@@ -2,6 +2,7 @@ import { Request,Response } from "express";
 import { User} from "../models/User";
 import { generateRandomNumber } from "../helpers/generateRandomNumber";
 import { validateEmail } from "../helpers/validateEmailUnifesspa";
+import { UserTypes } from "../types/UserType";
 import JWT from 'jsonwebtoken'
 import nodemailer from 'nodemailer'
 import doteenv from 'dotenv'
@@ -30,31 +31,23 @@ export const message_password_email = (req:Request,res:Response) =>{
 //--------- CONTROLLERS ROUTERS POST --------------------- 
 export const login_post = async (req:Request,res:Response) => {
   if (req.body.login && req.body.password) {
-    const email: string = req.body.login;
-    const password: string = req.body.password;
+    let email: UserTypes = req.body.login;
+    let password: UserTypes = req.body.password;
     let hasLogin = await User.findOne({where:{email,password}})
-    // Realize a autenticação do usuário
     if (hasLogin) {
-      // Gere o token JWT
       const token = JWT.sign(
         { id: hasLogin.id, email: hasLogin.email },
         process.env.JWT_SECRET_KEY as string,
         { expiresIn: '1h' }
       );
-      
-      // Defina o token como um cookie na resposta
       res.cookie('token', token, { httpOnly: true });
-      
-      // Redirecione para a página de home
        res.redirect('/home');
     } else {
-      // Envie uma resposta de erro
        res.render('pages/index', {
         message: 'Usuario não encontrado',
       });
     }
   } else {
-    // Envie uma resposta de erro
      res.render('pages/index', {
       message: 'Email e/ou senha inválidos',
     });
@@ -65,7 +58,7 @@ export const login_post = async (req:Request,res:Response) => {
 export const register_post = async (req: Request, res: Response) => {
   if (req.body.email && req.body.password && req.body.name) {
     let randomNumber = generateRandomNumber();
-    let { email, password, name } = req.body;
+    let { email, password, name }:UserTypes = req.body;
     let hasUser = await User.findOne({ where: { email } });
 
     if (!hasUser) {
@@ -77,12 +70,8 @@ export const register_post = async (req: Request, res: Response) => {
             process.env.JWT_SECRET_KEY as string,
             { expiresIn: '1h' }
           );
-          
-          // Defina o token como um cookie na resposta
           res.cookie('token', token, { httpOnly: true });
         }
-   
-
         const transporter = nodemailer.createTransport({
           host: 'smtp.gmail.com',
           port: 465,
@@ -138,7 +127,6 @@ export const register_post = async (req: Request, res: Response) => {
               message: 'Erro ao enviar e-mail',
             });
           } else {
-            // Redirecione para a página de confirmação de e-mail
             res.redirect('/confirm-email');
           }
         });
@@ -163,7 +151,7 @@ export const register_post = async (req: Request, res: Response) => {
 
 export const retrieveAccount_post = async(req:Request,res:Response) => {
     if(req.body.email_retrieve){
-      let {email_retrieve} = req.body
+      let {email_retrieve}:UserTypes = req.body
       let hasUser = await User.findOne({where:{email:email_retrieve}})
       if(hasUser){
         const token = JWT.sign(
@@ -186,7 +174,7 @@ export const retrieveAccount_post = async(req:Request,res:Response) => {
         const mailOptions = {
           from: 'alife.silva@unifesspa.edu.br',
           to: `${hasUser.email}`,
-          subject: 'Confirmação de E-mail',
+          subject: 'Recuperação Senha',
           html: `
             <html>
               <head>
@@ -228,7 +216,6 @@ export const retrieveAccount_post = async(req:Request,res:Response) => {
               message: 'Erro ao enviar e-mail',
             });
           } else {
-            // Redirecione para a página de confirmação de e-mail
             res.redirect('/message_send_password_email');
           }
         });
@@ -250,7 +237,7 @@ export const retrieveAccount_post = async(req:Request,res:Response) => {
 
 export const email_confirm_post = async (req: Request, res: Response) => {
   if (req.body.email_confirm) {
-    let { email_confirm} = req.body
+    let { email_confirm}:UserTypes = req.body
     let hasCode = await User.findOne({ where: { code: email_confirm } });
     if (hasCode?.code.toString() === req.body.email_confirm) {
       await User.update({ validated: 1 }, {
