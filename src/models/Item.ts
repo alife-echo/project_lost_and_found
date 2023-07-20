@@ -1,6 +1,7 @@
 import { Model, DataTypes } from 'sequelize';
 import { sequelize } from '../database/mysql';
 import { User } from './User';
+import { ItemResponse } from './ItemReponse';
 export interface ItemInstance extends Model {
   id: number;
   nameItem: string;
@@ -46,6 +47,9 @@ export const Item = sequelize.define<ItemInstance>('Item', {
     field:'userItemID'
  }
 }, { tableName: 'item', timestamps: false });
+
+Item.hasMany(ItemResponse,{foreignKey:'ID_user_response'})
+ItemResponse.belongsTo(Item,{foreignKey:'ID_user_response'})
 
 Item.sync().then(() => {
   console.log('Tabela Item Criada com Sucesso');

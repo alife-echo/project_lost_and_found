@@ -28,18 +28,17 @@ export const logout = (req:Request,res:Response) => {
 //--------- CONTROLLERS ROUTERS POST  --------------------- 
 
 export const upload_post = async (req:Request,res:Response) => {
-    if(req.body.name_item && req.body.description_item && req.body.questions_item && req.body.location_item && req.body.upload_img){
+    if(req.body.name_item && req.body.description_item && req.body.questions_item && req.body.location_item && req.file?.fieldname){
       const decodedToken = JWT.verify(req.cookies.token,process.env.JWT_SECRET_KEY as string) as JwtPayload
       const userRef = await User.findOne({where:{email:decodedToken.email}})
       try{
-        const image = req.body.upload_img
-        const base64Image = Buffer.from(image, 'binary').toString('base64')
+        const image = req.file.destination + '/' + req.file.originalname
       await Item.create({
          nameItem:req.body.name_item,
          littleDescription:req.body.description_item,
          questionsValidated: req.body.questions_item,
          meetingLocation: req.body.location_item,
-         image:base64Image,
+         image:image,
          userItemID:userRef?.id
       })
       res.render('pages/upload',{

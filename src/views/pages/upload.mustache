@@ -1,7 +1,7 @@
 {{>partials/header}}
 <section class="upload-container flex flex-col">
          <p class='p-card color-red center-text text-xs'>{{message}}</p>
-         <form action="upload-post" class="flex-col upload-form" method="post">
+         <form action="upload-post" class="flex-col upload-form" method="post" enctype="multipart/form-data">
             <label for="" class="label-upload sty-label">Nome do item:</label>
             <input 
                 type="text" 
@@ -27,6 +27,8 @@
             <label for="" class=" label-upload sty-label">Escolha imagem:</label>
             <input type="file" name="upload_img">
             <input class="bt-upload sb-style-upload" type="submit" value="Enviar">
+            </form>
+            
          </form>
     </section> 
 </main>
