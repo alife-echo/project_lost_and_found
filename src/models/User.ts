@@ -1,8 +1,10 @@
 import {sequelize} from '../database/mysql';
 import {Model,DataTypes} from 'sequelize'
 import { Item } from './Item';
+import { ItemResponse } from './ItemReponse';
 export interface UserInstance extends Model{
   id:number,
+  name:string,
   email:string,
   password:string,
   validated:boolean,
@@ -15,6 +17,10 @@ export const User = sequelize.define<UserInstance>('User',{
          type:DataTypes.INTEGER,
          primaryKey:true,
          autoIncrement:true
+     },
+     name:{
+       type:DataTypes.STRING,
+       allowNull:false
      },
      email:{
         type:DataTypes.STRING,
@@ -35,6 +41,8 @@ export const User = sequelize.define<UserInstance>('User',{
 },{tableName:'user',timestamps:false})
 User.hasMany(Item,{foreignKey:'userItemID'})
 Item.belongsTo(User,{foreignKey:'userItemID'})
+User.hasMany(ItemResponse,{foreignKey:'ID_user_response'})
+ItemResponse.belongsTo(User,{foreignKey:'ID_user_response'})
 User.sync().then(()=>{
      console.log('Tabela usuario criada com sucesso')
 }).catch((error)=>{

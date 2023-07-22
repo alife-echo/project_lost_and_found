@@ -24,4 +24,7 @@ routersMainPages.post('/logout',MainPagesControllers.logout)
 
 
 routersMainPages.post('/upload-post',upload.single('upload_img'),MainPagesControllers.upload_post)
+routersMainPages.post('/forum:id',Auth.private,MainPagesControllers.res_post)
+routersMainPages.get('/forum:id',Auth.private,MainPagesControllers.forum)
+
 export default routersMainPages

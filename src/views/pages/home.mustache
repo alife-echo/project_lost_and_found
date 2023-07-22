@@ -1,71 +1,16 @@
  {{>partials/header}}
  <section class="cards flex">
+            {{#cardsContent}}
             <div class="card">
-             <figure>
-                 <img src="./images/copo_stanley.JPG" alt="copo stanley">
-             </figure>
-             <h2 class="title-card text-xl">COPO STANLEY</h2>
-             <p class="p-card text-xs">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum Ipsum Ipsum.</p>
-             <a href="./forum.html"><input class="bt-card" type="submit" value="É meu"></a> 
-           </div>
-           <div class="card">
-            <figure>
-                <img src="./images/copo_stanley.JPG" alt="copo stanley">
-            </figure>
-            <h2 class="title-card text-xl">COPO STANLEY</h2>
-            <p class="p-card text-xs">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum Ipsum Ipsum.</p>
-            <a href="./forum.html"><input class="bt-card" type="submit" value="É meu"></a> 
-          </div>
-          <div class="card">
-            <figure>
-                <img src="./images/copo_stanley.JPG" alt="copo stanley">
-            </figure>
-            <h2 class="title-card text-xl">COPO STANLEY</h2>
-            <p class="p-card text-xs">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum Ipsum Ipsum.</p>
-            <a href="./forum.html"><input class="bt-card" type="submit" value="É meu"></a> 
-          </div>
-          <div class="card">
-            <figure>
-                <img src="./images/copo_stanley.JPG" alt="copo stanley">
-            </figure>
-            <h2 class="title-card text-xl">CARREGADOR SAMSUNG</h2>
-            <p class="p-card text-xs">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum Ipsum Ipsum.</p>
-            <a href="./forum.html"><input class="bt-card" type="submit" value="É meu"></a> 
-          </div>
-          <div class="card">
-            <figure>
-                <img src="./images/carregador.jpg" alt="copo stanley">
-            </figure>
-            <h2 class="title-card text-xl">COPO STANLEY</h2>
-            <p class="p-card text-xs">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum Ipsum Ipsum.</p>
-            <a href="./forum.html"><input class="bt-card" type="submit" value="É meu"></a> 
-          </div>
-          <div class="card">
-            <figure>
-                <img src="./images/carregador.jpg" alt="copo stanley">
-            </figure>
-            <h2 class="title-card text-xl">COPO STANLEY</h2>
-            <p class="p-card text-xs">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum Ipsum Ipsum.</p>
-            <a href="./forum.html"><input class="bt-card" type="submit" value="É meu"></a> 
-          </div>
-          <div class="card">
-            <figure>
-                <img src="./images/carregador.jpg" alt="copo stanley">
-            </figure>
-            <h2 class="title-card text-xl">COPO STANLEY</h2>
-            <p class="p-card text-xs">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum Ipsum Ipsum.</p>
-            <a href="./forum.html"><input class="bt-card" type="submit" value="É meu"></a> 
-          </div>
-          <div class="card">
-            <figure>
-                <img src="./images/carregador.jpg" alt="copo stanley">
-            </figure>
-            <h2 class="title-card text-xl">COPO STANLEY</h2>
-            <p class="p-card text-xs">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum Ipsum Ipsum.</p>
-            <a href="./forum.html"><input class="bt-card" type="submit" value="É meu"></a> 
-          </div>
-            
-         
+              <figure>
+                  <img src="{{image}}">
+              </figure>
+              <h2 class="title-card text-xl">{{nameItem}}</h2>
+              <p class="p-card text-xs">{{littleDescription}}</p>
+              <a href="/forum{{id}}"><input class="bt-card" type="submit" value="É meu"></a>
+
+            </div>
+           {{/cardsContent}}
        </section>
     </main>
 

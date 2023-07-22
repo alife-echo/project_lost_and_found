@@ -233,7 +233,7 @@ header{
   .imgs-link{
     margin-right: 5rem;
   }
-  .imgs-link  figure:nth-child(1),.imgs-link  figure:nth-child(2){
+  .imgs-link  figure{
         margin-right: 2rem;
   }
   /*CARDS PAGE HOME*/
@@ -244,7 +244,10 @@ header{
     margin-top: 2rem;
   }
   .card{
+    display: flex;
+    flex-direction: column;
      margin: 1rem;
+     min-height: 38.72rem;
      width: 28rem;
      border-radius: 1rem;
      box-shadow: 0px 0px 17px -3px rgba(0,0,0,0.1);
@@ -267,6 +270,10 @@ header{
     font-family: 'Inter';
     font-weight: 600;
     margin: 1rem;
+  }
+  .questions-container p {
+    overflow: hidden;
+    word-wrap: break-word;
   }
   .p-card{
     color: var(--colorTextCard);
@@ -352,6 +359,7 @@ header{
     box-shadow: 0px 0px 17px -3px rgba(0,0,0,0.1);
     padding: 0rem 0rem 1rem 0rem;
     border-radius: 0.8rem;
+    max-width: 50rem;
 }
 .message{
     box-shadow: 0px 0px 17px -3px rgba(0,0,0,0.1);

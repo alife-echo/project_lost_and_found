@@ -16,6 +16,10 @@ export const ItemResponse = sequelize.define<ItemResponseInstance>('ItemResponse
          primaryKey:true,
          autoIncrement:true
     },
+    userRes:{
+      type:DataTypes.STRING,
+      allowNull:false
+    },
     textReponse:{
          type:DataTypes.STRING,
          allowNull:false
@@ -28,14 +32,22 @@ export const ItemResponse = sequelize.define<ItemResponseInstance>('ItemResponse
         type:DataTypes.STRING,
         allowNull:false
     },
-    ID_user_response:{   
+    ID_item_response:{   
         type:DataTypes.INTEGER,
         references:{
              model:'item', 
              key:'id'  
         },
-        field:'ID_user_response'
-     }
+        field:'ID_item_response'
+     },
+     ID_user_response:{   
+          type:DataTypes.INTEGER,
+          references:{
+               model:'user', 
+               key:'id'  
+          },
+          field:'ID_user_response'
+       }
 },{timestamps:false,tableName:'itemresponse'})
 
 ItemResponse.sync().then(()=>{

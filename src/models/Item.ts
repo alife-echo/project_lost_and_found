@@ -8,7 +8,7 @@ export interface ItemInstance extends Model {
   littleDescription: string;
   questionsValidated: string;
   meetingLocation: string;
-  image: string; // Propriedade para armazenar a imagem em base64
+  image: string;
 }
 
 export const Item = sequelize.define<ItemInstance>('Item', {
@@ -34,7 +34,7 @@ export const Item = sequelize.define<ItemInstance>('Item', {
     allowNull: false
   },
   image: {
-    type: DataTypes.TEXT, // Utilize o tipo TEXT para armazenar a base64 da imagem
+    type: DataTypes.TEXT,
     allowNull: false
   },
   
@@ -48,8 +48,8 @@ export const Item = sequelize.define<ItemInstance>('Item', {
  }
 }, { tableName: 'item', timestamps: false });
 
-Item.hasMany(ItemResponse,{foreignKey:'ID_user_response'})
-ItemResponse.belongsTo(Item,{foreignKey:'ID_user_response'})
+Item.hasMany(ItemResponse,{foreignKey:'ID_item_response'})
+ItemResponse.belongsTo(Item,{foreignKey:'ID_item_response'})
 
 Item.sync().then(() => {
   console.log('Tabela Item Criada com Sucesso');
