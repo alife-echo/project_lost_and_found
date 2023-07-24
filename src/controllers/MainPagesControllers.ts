@@ -29,8 +29,6 @@ export const forum = async(req:Request,res:Response)=>{
       const id:string = req.params.id  as string
       const forumChoice = await Item.findByPk(id)
       const  getMessages = await ItemResponse.findAll({where:{ID_item_response:forumChoice?.id}})
-      console.log(id)
-      console.log(forumChoice)
       res.render('pages/forum',{
         forumChoice,
         getMessages
@@ -39,8 +37,13 @@ export const forum = async(req:Request,res:Response)=>{
 export const upload = (req:Request,res:Response) => {
     res.render('pages/upload');
 }
-export const messages = (req:Request,res:Response) => {
+export const messages = async (req:Request,res:Response) => {
+    const decodedToken = JWT.verify(req.cookies.token, process.env.JWT_SECRET_KEY as string) as JwtPayload;
+    const userRef = await User.findOne({ where: { email: decodedToken.email } });
     res.render('pages/messages');
+}
+export const list_responses= async (req:Request,res:Response) => {
+    res.render('pages/listItems')
 }
 export const logout = (req:Request,res:Response) => {
   const token = req.cookies.token as string;

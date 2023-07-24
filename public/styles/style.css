@@ -204,6 +204,10 @@ header{
     padding: 1.1rem;
     z-index: 2;
   }
+  .adjust_img_notify{
+    width: 5rem;
+    border-radius: 0.8rem;
+  }
   .fg--search button img {
      width: 2.5rem;
   }
@@ -271,8 +275,21 @@ header{
     font-weight: 600;
     margin: 1rem;
   }
+  .title_res_notify{
+    color: var(--backgroundDefaultElements);
+    font-family: 'Inter';
+    font-weight: 600;
+    margin-left: 0.5rem;
+  }
   .questions-container p {
     overflow: hidden;
+    word-wrap: break-word;
+  }
+  .p_card_res_notify{
+    color: var(--colorTextCard);
+    font-family: 'Inter';
+    font-weight: 500;
+    margin: 0.5rem 0rem 0rem 0.5rem;
     word-wrap: break-word;
   }
   .p-card{
@@ -369,7 +386,15 @@ header{
     transition: 300ms ease;
     cursor: pointer;
 }
-.message:hover{
+.container_messages_view{
+    box-shadow: 0px 0px 17px -3px rgba(0,0,0,0.1);
+    border-radius: 0.8rem;
+    width: 50rem;
+    padding: 1rem;
+    transition: 300ms ease;
+    cursor: pointer;
+}
+.message:hover,.container_messages_view:hover{
     transition: ease 300ms;
     box-shadow: 0px 0px 7px 9px rgba(0,0,0,0.1);
     
