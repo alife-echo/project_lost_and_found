@@ -14,18 +14,25 @@ const storage = multer.diskStorage({
     }
   });
   
-  const upload = multer({ storage: storage });
+const upload = multer({ storage: storage });
 const routersMainPages = Router()
 
+/*GET ESTATICO*/
 routersMainPages.get('/home',Auth.private,MainPagesControllers.home)
 routersMainPages.get('/upload',Auth.private,MainPagesControllers.upload)
 routersMainPages.get('/messages',Auth.private,MainPagesControllers.messages)
+
+/*POST ESTATICO*/
 routersMainPages.post('/logout',MainPagesControllers.logout)
 
-routersMainPages.get('/list_responses',Auth.private,MainPagesControllers.list_responses)
+/*POST DINAMICO*/
 routersMainPages.post('/upload-post',upload.single('upload_img'),MainPagesControllers.upload_post)
 routersMainPages.post('/forum:id',Auth.private,MainPagesControllers.res_post)
+
+/*GET DINAMICO*/
 routersMainPages.get('/forum:id',Auth.private,MainPagesControllers.forum)
+routersMainPages.get('/list_items_user:id',Auth.private,MainPagesControllers.list_items_user)
+routersMainPages.get('/myforum:id',Auth.private,MainPagesControllers.my_forum)
 
 
 export default routersMainPages

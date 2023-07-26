@@ -1,14 +1,14 @@
  {{>partials/header}}
    <section class="flex mt-1_5 forum-container flex-col">
-{{#forumChoice}}
+            {{#forumChoice}}
             <div class="info-item">
                 <img src="{{image}}" class="img-forum" alt="">
-            <h2 class="title-card title-rs text-xl">{{nameItem}}</h2>    
-            <div class="questions-container">
-                    <p class="p-card text-xs text-rs mt-1">{{questionsValidated}}</p>
-            </div>
+                <h2 class="title-card title-rs text-xl">{{nameItem}}</h2>    
+                <div class="questions-container">
+                        <p class="p-card text-xs text-rs mt-1">{{questionsValidated}}</p>
+                </div>
             <form action="/forum{{id}}" class="flex flex-col" method='post'>
-{{/forumChoice}}
+            {{/forumChoice}}
                 <p class='p-card color-red center-text text-xs'>{{message}}</p>
                 <textarea name="res_item" class="input-textArea m-1 styles-input"  placeholder="Ex: A) Nome Atlas, B)Cinza"></textarea>
                 <input type="submit" class="bt-card" value="Enviar">
@@ -20,7 +20,7 @@
                     <p class="title-card text-xs text-rs-message">CODIGO:{{ID_user_response}} - {{userRes}} - {{date}} - {{time}}</p>
                     <p class="p-card text-xs text-rs">{{textReponse}}</p>
             </div>
-                {{/getMessages}}
+            {{/getMessages}}
      </section>
     </main>
     </body>

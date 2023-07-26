@@ -29,16 +29,16 @@
                  <div class="three"></div>
                </div>
                <div class="imgs-link">
-                   <figure><a href="/home"><img src="./images/casa.png" alt="imagem casa"></a></figure>
-                   <figure><a href="/list_responses"><img src="./images/lista-de-reproducao.png" alt="imagem de lista"></a></figure>
+                   <figure><a href="/home"><img src="./images/Home.png" alt="imagem casa"></a></figure>
+                   <figure><a href="/list_items_user{{infoUser}}"><img src="./images/Settings.png" alt="imagem de lista"></a></figure>
                    <figure><a href="/upload"><img src="./images/Cloud computing.png" alt="imagem de nuvens"></a></figure>
-                   <figure><a href="/messages"><img src="./images/Email.png" alt="imagem de carta"></a></figure>
+                   <figure><a href="/messages"><img src="./images/Envelope.png" alt="imagem de carta"></a></figure>
                    
                    
                    <figure>
                     <form action="/logout" method="post">
                       <button type="submit" style="">
-                        <img src= "./images/sair.png" alt="imagem de nuvens">
+                        <img src= "./images/exit.png" alt="imagem de nuvens">
                       </button>
                     </form>
                   </figure>
@@ -50,7 +50,14 @@
              <input type="text" name="filter-search" class="input-search-hidden">
              <input type="submit" value="Pesquisar" class="submit-search-hidden">
           </form>
-          <a href="./upload.html">UPLOAD</a>
-          <a href="./messages.html">MENSAGENS</a>
-          <a href="./index.html">SAIR</a>
+          <a href="/home">HOME</a>
+          <a href="/list_items_user{{infoUser}}">ITEMS</a>
+          <a href="/upload">UPLOAD</a>
+          <a href="/messages">MENSAGENS</a>
+           <form action="/logout" method="post">
+                      <button type="submit" style="" class='sb-mob-logout'>
+                       <a href="">SAIR</a>
+                      </button>
+            </form>
+          
        </section>

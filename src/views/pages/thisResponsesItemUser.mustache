@@ -1,0 +1,20 @@
+{{>partials/header}}
+    <section class="flex mt-1_5 forum-container flex-col">
+      <form action="" class="flex-col upload-form" method="post">
+            <label for="" class="label-upload sty-label">Código usuário para envio de localização</label>
+            <input 
+                type="text" 
+                name="id_user_send"  
+                class="si-tu styles-input size-input-name-item" 
+                placeholder="Ex:2">
+           <input class="bt-upload sb-style-upload" type="submit" value="Enviar">
+        </form>
+            {{#getResponsesThisItem}}
+                <div class="message mt-1_5">
+                    <p class="title-card text-xs text-rs-message">CÓDIGO:{{ID_user_response}} - {{userRes}} - {{date}} - {{time}}</p>
+                    <p class="p-card text-xs text-rs">{{textReponse}}</p>
+            </div>
+            {{/getResponsesThisItem}}
+    </section>
+ </main>
+{{>partials/footer}}

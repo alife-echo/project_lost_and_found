@@ -250,7 +250,7 @@ export const email_confirm_post = async (req: Request, res: Response) => {
         process.env.JWT_SECRET_KEY as string,
         { expiresIn: '1h' }
       );
-      res.cookie('token', token, { httpOnly: true });
+       res.cookie('token', token, { httpOnly: true });
        res.redirect(`/message_create_email`);
     } else {
       res.render('pages/confirmAccount', {
