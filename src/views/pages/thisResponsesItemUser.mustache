@@ -1,6 +1,7 @@
 {{>partials/header}}
     <section class="flex mt-1_5 forum-container flex-col">
-      <form action="" class="flex-col upload-form" method="post">
+      <p class='p-card color-red center-text text-xs' style='{{show}}'>{{message}}</p>
+      <form action="/sendMessageLocation" class="flex-col upload-form" method="post">
             <label for="" class="label-upload sty-label">Código usuário para envio de localização</label>
             <input 
                 type="text" 
@@ -15,6 +16,8 @@
                     <p class="p-card text-xs text-rs">{{textReponse}}</p>
             </div>
             {{/getResponsesThisItem}}
+            <p class='p-card center-text text-3xl'>{{notResponses}}</p>
+
     </section>
  </main>
 {{>partials/footer}}

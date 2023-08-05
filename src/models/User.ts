@@ -2,12 +2,13 @@ import {sequelize} from '../database/mysql';
 import {Model,DataTypes} from 'sequelize'
 import { Item } from './Item';
 import { ItemResponse } from './ItemReponse';
+import { message } from './Message';
 export interface UserInstance extends Model{
   id:number,
   name:string,
   email:string,
   password:string,
-  validated:boolean,
+  validated:number,
   code:number
 
 }
@@ -39,12 +40,10 @@ export const User = sequelize.define<UserInstance>('User',{
      }
      
 },{tableName:'user',timestamps:false})
+
 User.hasMany(Item,{foreignKey:'userItemID'})
 Item.belongsTo(User,{foreignKey:'userItemID'})
 User.hasMany(ItemResponse,{foreignKey:'ID_user_response'})
 ItemResponse.belongsTo(User,{foreignKey:'ID_user_response'})
-User.sync().then(()=>{
-     console.log('Tabela usuario criada com sucesso')
-}).catch((error)=>{
-     console.log('-------------- Ocorreu um error na tabela usuario ---------- :',error)
-})
+User.hasMany(message,{foreignKey:'ID_user_message'})
+message.belongsTo(User,{foreignKey:'ID_user_message'})

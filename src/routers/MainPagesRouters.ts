@@ -24,7 +24,7 @@ routersMainPages.get('/messages',Auth.private,MainPagesControllers.messages)
 
 /*POST ESTATICO*/
 routersMainPages.post('/logout',MainPagesControllers.logout)
-
+routersMainPages.post('/sendMessageLocation',MainPagesControllers.sendMessageLocation)
 /*POST DINAMICO*/
 routersMainPages.post('/upload-post',upload.single('upload_img'),MainPagesControllers.upload_post)
 routersMainPages.post('/forum:id',Auth.private,MainPagesControllers.res_post)

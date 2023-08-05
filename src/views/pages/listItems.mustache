@@ -1,14 +1,15 @@
 {{>partials/header}}
  <section class="flex flex-col">
+ <p class='p-card mt-message center-text text-3xl'>{{notList}}</p>
  {{#listItemsUser}}
         <a href='/myforum{{id}}'>
-        <div class="container_messages_view mt-1_5 m-1 flex">
+        <div class="container_messages_view mt-1_5 m-1 justFlex ">
             <figure >
                 <img src='{{image}}' class='adjust_img_notify' />
             </figure>
-            <div class=' flex-col'>
-                <h2 class="title_res_notify text-xs">{{nameItem}}</h2>
-                <p class='p_card_res_notify text-xs'>{{littleDescription}}</p>
+            <div class=' flex-col t'>
+                <h2 class="title_res_notify text-xs t">{{nameItem}} - {{id}}</h2>
+                <p class='p_card_res_notify text-xs t'>{{littleDescription}}</p>
             </div>
         </div>
         </a>

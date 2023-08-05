@@ -1,6 +1,6 @@
 {{>partials/header}}
 <section class="upload-container flex flex-col">
-         <p class='p-card color-red center-text text-xs'>{{message}}</p>
+         <p class='p-card color-red center-text text-xs' style='{{show}}'>{{message}}</p>
          <form action="upload-post" class="flex-col upload-form" method="post" enctype="multipart/form-data">
             <label for="" class="label-upload sty-label">Nome do item:</label>
             <input 

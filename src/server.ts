@@ -5,6 +5,7 @@ import routersMainPages from "./routers/MainPagesRouters";
 import dotenv from 'dotenv'
 import mustacheExpress from "mustache-express";
 import cookieParser from 'cookie-parser'
+import { sequelize } from "./database/mysql";
 dotenv.config()
 const server = express()
 
@@ -21,5 +22,5 @@ server.use((req:Request,res:Response)=>{
      res.json({error:'pagina não encontrada'}).status(404)
 })
 
-
+sequelize.sync().then(()=>{console.log('tabelas criadas com sucesso')}).catch(error => console.log(error))
 server.listen(process.env.PORT)

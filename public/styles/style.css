@@ -26,6 +26,10 @@ body{
     justify-content: center;
     align-items: center;
 }
+.justFlex{
+    display: flex;
+    text-align: left;
+}
 .full-size{
     height: 100vh;
     width: 100%;
@@ -113,6 +117,13 @@ body{
     width: 30.9rem;
     height: 3.5rem;
 }
+
+.mt-message{
+    position: absolute; 
+    top: 40%; 
+    left: 50%; 
+    transform: translate(-50%, -50%);
+}
 footer{
     min-height: 7.5rem;
     max-height: 100%;
@@ -135,19 +146,34 @@ footer p span img{
     width: 1rem;
     height: 1rem;
 }
-.spinner{
-    height: 6rem;
-    width: 6rem;
-    border: 6px solid black;
-    border-color: black transparent black transparent;
-    border-radius: 50%;
-    animation:  spin 1s linear infinite;
-    display: block;
+.custom-loader {
+    width: 100px;
+    height: 100px;
+    display: none;
 }
-@keyframes spin{
-    to{
-        transform: rotate(360deg);
-    }
+.custom-loader::before,
+.custom-loader::after {    
+    content:"";
+    grid-area: 1/1;
+    --c: radial-gradient(farthest-side,#1C1A3A 92%,#0000);
+    background: 
+      var(--c) 50%  0, 
+      var(--c) 50%  100%, 
+      var(--c) 100% 50%, 
+      var(--c) 0    50%;
+    background-size: 24px 24px;
+    background-repeat: no-repeat;
+    animation: s2 1s infinite;
+}
+.custom-loader::before {
+  margin:8px;
+  filter:hue-rotate(45deg);
+  background-size: 16px 16px;
+  animation-timing-function: linear
+}
+
+@keyframes s2{ 
+  100%{transform: rotate(.5turn)}
 }
 
 /* INPUTS AND TITLE PAGE HOME*/
@@ -320,6 +346,9 @@ header{
     font-weight: 500;
     margin: 1rem;
   }
+  .text-3xl{
+    font-size: 2.5rem;
+  }
   .text-xl{
     font-size: 2rem;
   }
@@ -407,6 +436,10 @@ header{
     padding: 1rem;
     transition: 300ms ease;
     cursor: pointer;
+    word-wrap: break-word;
+}
+.t{
+    text-align: left;
 }
 .container_messages_view{
     box-shadow: 0px 0px 17px -3px rgba(0,0,0,0.1);
@@ -415,6 +448,7 @@ header{
     padding: 1rem;
     transition: 300ms ease;
     cursor: pointer;
+    text-align: left;
 }
 .message:hover,.container_messages_view:hover{
     transition: ease 300ms;
@@ -440,6 +474,8 @@ header{
         width: 100%;
         background-color: var(--backgroundFooter);
         text-align: center;
+        z-index: 999;
+        position: absolute;
         display: none;
     }
     .links-hidden  a {

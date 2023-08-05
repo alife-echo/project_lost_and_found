@@ -2,6 +2,7 @@ import { Model, DataTypes } from 'sequelize';
 import { sequelize } from '../database/mysql';
 import { User } from './User';
 import { ItemResponse } from './ItemReponse';
+import { message } from './Message';
 export interface ItemInstance extends Model {
   id: number;
   nameItem: string;
@@ -9,6 +10,7 @@ export interface ItemInstance extends Model {
   questionsValidated: string;
   meetingLocation: string;
   image: string;
+  userItemID:number
 }
 
 export const Item = sequelize.define<ItemInstance>('Item', {
@@ -48,11 +50,9 @@ export const Item = sequelize.define<ItemInstance>('Item', {
  }
 }, { tableName: 'item', timestamps: false });
 
-Item.hasMany(ItemResponse,{foreignKey:'ID_item_response'})
-ItemResponse.belongsTo(Item,{foreignKey:'ID_item_response'})
+Item.hasMany(ItemResponse,{foreignKey:'ID_item_response',onDelete:'CASCADE'})
+ItemResponse.belongsTo(Item,{foreignKey:'ID_item_response',onDelete:'CASCADE'})
 
-Item.sync().then(() => {
-  console.log('Tabela Item Criada com Sucesso');
-}).catch((error) => {
-  console.log('Erro na criação da tabela Item:', error);
-});
+Item.hasMany(message,{foreignKey:'ID_item_message',onDelete:'CASCADE'})
+message.belongsTo(Item,{foreignKey:'ID_item_message',onDelete:'CASCADE'})
+

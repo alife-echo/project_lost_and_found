@@ -34,7 +34,7 @@ export const login_post = async (req:Request,res:Response) => {
     let email: UserTypes = req.body.login;
     let password: UserTypes = req.body.password;
     let hasLogin = await User.findOne({where:{email,password}})
-    if (hasLogin) {
+    if (hasLogin && hasLogin.validated === 1) {
       const token = JWT.sign(
         { id: hasLogin.id, email: hasLogin.email },
         process.env.JWT_SECRET_KEY as string,
@@ -60,10 +60,10 @@ export const register_post = async (req: Request, res: Response) => {
     let randomNumber = generateRandomNumber();
     let { email, password, name }:UserTypes = req.body;
     let hasUser = await User.findOne({ where: { email } });
-
     if (!hasUser) {
       if (validateEmail(req.body.email)) {
         let newUser = await User.create({ email, password, name, code: randomNumber });
+        
         if(newUser){
           const token = JWT.sign(
             { id: newUser.id, email: newUser.email },
@@ -127,7 +127,10 @@ export const register_post = async (req: Request, res: Response) => {
               message: 'Erro ao enviar e-mail',
             });
           } else {
-            res.redirect('/confirm-email');
+           
+          
+              res.redirect('/confirm-email');
+    
           }
         });
 

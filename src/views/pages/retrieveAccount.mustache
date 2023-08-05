@@ -14,14 +14,20 @@
 <body class="flex full-size">
  <main class="flex full-size">
     <section class="form-container flex">
-    <form action="retrieve-post" class="register-retrieve" method="post">
+    <div class="custom-loader"></div>
+    <form action="retrieve-post" class="register-retrieve hiddenFormRetrieve" method="post">
         <h1 class="dra center-text title-form ">RECUPERAR SENHA</h1>
         <p class='p-card color-red center-text text-xs'>{{message}}</p>
         <label for="name" class="sty-label">Email Institucional *</label>
          <input type="email" class="styles-input size-inputs" name="email_retrieve" placeholder="Ex:alife.silva@unifesspa.edu.br">
-         <input type="submit" class="sb-style" value="Enviar">
+         <input type="submit" id='event-retrieve' class="sb-style" value="Enviar">
       </form>
     </section>
  </main>
-
+  <script>
+     document.querySelector('#event-retrieve').addEventListener('click',()=>{
+     document.querySelector('.hiddenFormRetrieve').style.display = 'none'
+     document.querySelector('.custom-loader').style.display = 'grid'
+     console.log('clicou')
+}) </script>
  {{>partials/footer}}

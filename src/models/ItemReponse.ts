@@ -7,7 +7,8 @@ export interface ItemResponseInstance extends Model {
      id:number,
      textResponse:string,
      date:string,
-     time:string
+     time:string,
+     ID_item_response:number
 }
 
 export const ItemResponse = sequelize.define<ItemResponseInstance>('ItemResponse',{
@@ -50,6 +51,3 @@ export const ItemResponse = sequelize.define<ItemResponseInstance>('ItemResponse
        }
 },{timestamps:false,tableName:'itemresponse'})
 
-ItemResponse.sync().then(()=>{
-     console.log('Tabela resposta Item criada com sucesso')
-}).catch((error)=>console.log(error))

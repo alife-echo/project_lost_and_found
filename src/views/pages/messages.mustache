@@ -1,17 +1,12 @@
 {{>partials/header}}
    <section class="flex flex-col">
+        <p class='p-card  center-text mt-message text-3xl'>{{notMessages}}</p>
+        {{#messageRefUser}}
         <div class="message mt-1_5 m-1">
-            <h2 class="title-card text-xs">DE:#ÁLIFE SILVA DE MORAES</h2>
-            <p class="p-card text-xs mt-1">Unifesspa Campus 2, Bloco 5, Sala 24,Horario:17:30</p>
+            <h2 class="title-card text-xs">DE:#{{userSend}} - {{date}} - {{time}}</h2>
+            <p class="p-card text-xs mt-1">{{meetingLocation}}</p>
         </div>
-        <div class="message mt-1_5 m-1">
-            <h2 class="title-card text-xs">DE:#MATHEUS SILVA DE SOUZA</h2>
-            <p class="p-card text-xs mt-1">Unifesspa Campus 3, Bloco 1, Sala 10,Horario:14:30</p>
-        </div>
-        <div class="message mt-1_5 m-1">
-            <h2 class="title-card text-xs">DE:#JOÃO GABRIEL</h2>
-            <p class="p-card text-xs mt-1">Unifesspa Campus 1, Bloco 2, Sala 3,Horario:13:00</p>
-        </div>
+        {{/messageRefUser}}
    </section>
   </main>
 {{>partials/footer}}
