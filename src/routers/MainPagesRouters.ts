@@ -21,7 +21,7 @@ const routersMainPages = Router()
 routersMainPages.get('/home',Auth.private,MainPagesControllers.home)
 routersMainPages.get('/upload',Auth.private,MainPagesControllers.upload)
 routersMainPages.get('/messages',Auth.private,MainPagesControllers.messages)
-
+routersMainPages.get('/filter-cards',Auth.private,MainPagesControllers.filterCards)
 /*POST ESTATICO*/
 routersMainPages.post('/logout',MainPagesControllers.logout)
 routersMainPages.post('/sendMessageLocation',MainPagesControllers.sendMessageLocation)

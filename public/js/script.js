@@ -20,8 +20,3 @@ menuToggle.addEventListener('click', () => {
         show = true;
     }
 });
-document.querySelector('#event').addEventListener('click',()=>{
-     document.querySelector('.hiddenForm').style.display = 'none'
-     document.querySelector('.custom-loader').style.display = 'grid'
-     console.log('clicou')
-})

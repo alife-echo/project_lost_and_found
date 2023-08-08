@@ -43,6 +43,22 @@ export const home = async (req: Request, res: Response) => {
     }
     console.log('cards---------',cardsContent);
   } 
+export const filterCards = async(req:Request,res:Response) => {
+    if(req.query.filterSearch as string) {
+        const cardsContent = await Item.findAll({where:{
+          nameItem:{
+             [Op.like]: `%${req.query.filterSearch}%`
+          }
+        }})
+        res.render('pages/home',{
+          infoUser: (await getUserRef(req.cookies.token, process.env.JWT_SECRET_KEY as string)).id,
+          cardsContent
+        })
+    }
+    else{
+      res.redirect('/home')
+    }
+}
 export const forum = async(req:Request,res:Response)=>{
       const id:string = req.params.id  as string
       const forumChoice = await Item.findByPk(id)

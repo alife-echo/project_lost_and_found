@@ -17,7 +17,6 @@ server.use(express.static(path.join(__dirname,'../public')))
 server.use(cookieParser())
 server.use(AuthRouters)
 server.use(routersMainPages)
-
 server.use((req:Request,res:Response)=>{
      res.json({error:'pagina não encontrada'}).status(404)
 })

@@ -151,6 +151,7 @@ footer p span img{
     height: 100px;
     display: none;
 }
+/*ANIMATIONS*/
 .custom-loader::before,
 .custom-loader::after {    
     content:"";
@@ -176,6 +177,34 @@ footer p span img{
   100%{transform: rotate(.5turn)}
 }
 
+/*FLIP CARD*/
+.flip-vertical-left {
+	-webkit-animation: flip-vertical-left 0.4s cubic-bezier(0.455, 0.030, 0.515, 0.955) reverse both;
+	        animation: flip-vertical-left 0.4s cubic-bezier(0.455, 0.030, 0.515, 0.955) reverse both;
+}
+
+@-webkit-keyframes flip-vertical-left {
+    0% {
+      -webkit-transform: rotateY(0);
+              transform: rotateY(0);
+    }
+    100% {
+      -webkit-transform: rotateY(-180deg);
+              transform: rotateY(-180deg);
+    }
+  }
+  @keyframes flip-vertical-left {
+    0% {
+      -webkit-transform: rotateY(0);
+              transform: rotateY(0);
+    }
+    100% {
+      -webkit-transform: rotateY(-180deg);
+              transform: rotateY(-180deg);
+    }
+  }
+  
+
 /* INPUTS AND TITLE PAGE HOME*/
 header{
     width: 100%;
@@ -200,6 +229,7 @@ header{
     border: transparent;
     width: 100%;
     display: block;
+    cursor: pointer;
 }
 .title-home a{
     color: inherit;
@@ -249,9 +279,8 @@ header{
      cursor: pointer;
   }
   .imgs-link figure{
-     background-color: var(--white);
+     
      display: inline-block;
-     border-radius: 50%;
      padding: 0.7rem;
      cursor: pointer;
    
@@ -284,10 +313,16 @@ header{
 .imgs-link figure form button  {
     background-color: transparent;
 }
+.imgs-link  figure:hover{
+    transform: scale(1.2);
+    transition: 300ms;
+}
+/*
+
 .imgs-link  figure:hover,.imgs-link  figure:last-child:hover, .imgs-link  figure form:last-child:hover,.imgs-link figure form button:last-child:hover,.imgs-link figure form button img:last-child:hover{
     background-color: tomato;
     transition: 300ms;
-}
+}*/
   /*CARDS PAGE HOME*/
   .cards{
     flex-wrap: wrap;
@@ -464,7 +499,7 @@ header{
 }
 /* MEDIA QUERIES */
 @media screen and (min-width:891px){
-    .links-hidden a{
+    .links-hidden a,.sb-mob-logout{
         display: none;
     }
     
@@ -478,7 +513,7 @@ header{
         position: absolute;
         display: none;
     }
-    .links-hidden  a {
+    .links-hidden  a,.sb-mob-logout {
         color: var(--white);
         padding: 1rem;
         display: block;
@@ -487,7 +522,7 @@ header{
         font-weight: 400;
         transition: 300ms ease; 
     }
-    .links-hidden a:hover{
+    .links-hidden a:hover,.sb-mob-logout:hover{
         transition: 300ms ease;
         background-color: var(--white);
         color: var(--backgroundFooter);
