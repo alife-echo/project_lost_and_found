@@ -50,10 +50,15 @@ export const filterCards = async(req:Request,res:Response) => {
              [Op.like]: `%${req.query.filterSearch}%`
           }
         }})
-        res.render('pages/home',{
-          infoUser: (await getUserRef(req.cookies.token, process.env.JWT_SECRET_KEY as string)).id,
-          cardsContent
-        })
+        if(cardsContent.length === 0){
+          res.redirect('/home')  
+        }
+        else{
+          res.render('pages/home',{
+            infoUser: (await getUserRef(req.cookies.token, process.env.JWT_SECRET_KEY as string)).id,
+            cardsContent
+          })
+        }
     }
     else{
       res.redirect('/home')
